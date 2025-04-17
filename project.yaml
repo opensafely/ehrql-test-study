@@ -1,0 +1,87 @@
+version: '4.0'
+
+
+actions:
+
+  generate_dataset_2015:
+    run: ehrql:v1 generate-dataset analysis/dataset_definition.py --output output/dataset_2015.arrow -- --year=2015
+    outputs:
+      highly_sensitive:
+        dataset: output/dataset_2015.arrow
+
+  generate_dataset_2016:
+    run: ehrql:v1 generate-dataset analysis/dataset_definition.py --output output/dataset_2016.arrow -- --year=2016
+    outputs:
+      highly_sensitive:
+        dataset: output/dataset_2016.arrow
+
+  generate_dataset_2017:
+    run: ehrql:v1 generate-dataset analysis/dataset_definition.py --output output/dataset_2017.arrow -- --year=2017
+    outputs:
+      highly_sensitive:
+        dataset: output/dataset_2017.arrow
+
+  generate_dataset_2018:
+    run: ehrql:v1 generate-dataset analysis/dataset_definition.py --output output/dataset_2018.arrow -- --year=2018
+    outputs:
+      highly_sensitive:
+        dataset: output/dataset_2018.arrow
+
+  generate_dataset_2019:
+    run: ehrql:v1 generate-dataset analysis/dataset_definition.py --output output/dataset_2019.arrow -- --year=2019
+    outputs:
+      highly_sensitive:
+        dataset: output/dataset_2019.arrow
+
+  generate_dataset_2020:
+    run: ehrql:v1 generate-dataset analysis/dataset_definition.py --output output/dataset_2020.arrow -- --year=2020
+    outputs:
+      highly_sensitive:
+        dataset: output/dataset_2020.arrow
+
+  generate_dataset_2021:
+    run: ehrql:v1 generate-dataset analysis/dataset_definition.py --output output/dataset_2021.arrow -- --year=2021
+    outputs:
+      highly_sensitive:
+        dataset: output/dataset_2021.arrow
+
+  generate_dataset_2022:
+    run: ehrql:v1 generate-dataset analysis/dataset_definition.py --output output/dataset_2022.arrow -- --year=2022
+    outputs:
+      highly_sensitive:
+        dataset: output/dataset_2022.arrow
+
+  generate_dataset_2023:
+    run: ehrql:v1 generate-dataset analysis/dataset_definition.py --output output/dataset_2023.arrow -- --year=2023
+    outputs:
+      highly_sensitive:
+        dataset: output/dataset_2023.arrow
+
+  generate_dataset_2024:
+    run: ehrql:v1 generate-dataset analysis/dataset_definition.py --output output/dataset_2024.arrow -- --year=2024
+    outputs:
+      highly_sensitive:
+        dataset: output/dataset_2024.arrow
+
+  count_by_year:
+    run: python:v1 analysis/count_by_year.py
+    needs:
+      - generate_dataset_2015
+      - generate_dataset_2016
+      - generate_dataset_2017
+      - generate_dataset_2018
+      - generate_dataset_2019
+      - generate_dataset_2020
+      - generate_dataset_2021
+      - generate_dataset_2022
+      - generate_dataset_2023
+      - generate_dataset_2024
+    outputs:
+      moderately_sensitive:
+        counts: output/count_by_year.csv
+
+  generate_measures:
+    run: ehrql:v1 generate-measures analysis/measures_definition.py --output output/measures.csv
+    outputs:
+      moderately_sensitive:
+        dataset: output/measures.csv
