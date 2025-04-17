@@ -1,7 +1,11 @@
-# ehrql-tutorial
+# ehrql-test-study
 
-This repo is a template for [the ehrQL tutorial][1].
-It is part of the OpenSAFELY platform's technical documentation.
+This repo is a test study.
+
+It contains a parameterized version of the dataset definition from the ehrql tutorial[1], a
+python script that reads and combines some data from the outputs of the dataset definition,
+and a measures definition.
+
 
 ## About the OpenSAFELY platform
 
