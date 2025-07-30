@@ -7,3 +7,5 @@ index_date = f"{year}-01-01"
 dataset = create_dataset()
 dataset.age = patients.age_on(index_date)
 dataset.define_population(dataset.age > 17)
+# Deliberately fail any actions using this dataset definition
+assert False
